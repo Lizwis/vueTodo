@@ -1,42 +1,18 @@
 <template>
   <div id="app">
     <Header />
-    <addtodo v-on:add-todo="addtodo" />
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+    <router-view />
   </div>
 </template>
-
 <script>
 import Header from "./components/layouts/Header";
-import Todos from "./components/Todos";
-import addtodo from "./components/AddTodo";
 export default {
   name: "app",
   components: {
-    Header,
-    Todos,
-    addtodo
-  },
-  data() {
-    return {
-      todos: [
-        { id: 1, title: "Todo One", completed: false },
-        { id: 2, title: "Todo Two", completed: true },
-        { id: 3, title: "Todo Three", completed: false }
-      ]
-    };
-  },
-  methods: {
-    deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
-    },
-    addtodo(newTodo) {
-      this.todos = [...this.todos, newTodo];
-    }
+    Header
   }
 };
 </script>
-
 <style>
 * {
   box-sizing: border-box;
